@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <script>
+        // 실습예제 
+        // 1. 사용자가 입력한 아이디가 'master', 'abcd', 'naver'중 하나만 입력해도 인증이 되며, 패스워드는 '1234'일때 인증이 되도록 결과값이 나오도록 함.
+
+        let id = prompt('아이디를 입력하세요.');
+        let pw = prompt('패스워드를 입력하세요.');
+
+        // 1번 정답
+        ((id=='master')||(id=='abcd')||(id=="naver"))&&(pw=='1234')?alert('인증완료'):alert('인증실패');
+
+        // 2번 정답
+        let join = (id=='master'||id=='abcd'||id=="naver")&&(pw=='1234');
+        let result = join?alert('인증완료'):alert('인증실패');
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

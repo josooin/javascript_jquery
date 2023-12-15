@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_자바스크립트_연산자</title>
+    <style>
+        .p01{color: #f00;}
+        .p02{color: #00f;}
+    </style>
+    <script>
+        // 1. 산술연산자 +, -, *
+        let a = 10;  // 데이터 입력
+        let b = 5;   // 데이터 입력
+        let c = prompt('숫자를 입력하세요.');
+
+        // 출력
+        document.write(a+b+'<br>');   //15
+        document.write(a*b+'<br>');   //50
+        document.write(a%b+'<br>');   //0
+
+        if(c%2==0){
+            document.write('<p class="p01">입력하신 숫자는 짝수입니다.</p>');
+        }else{
+            document.write('<p class="p02">입력하신 숫자는 홀수입니다.</p>');
+        }
+
+        // 2. 비교연산자
+        let res = a > b;
+        document.write(res);   // 10>5보다 크기 때문에 true값이 출력됨.
+        
+        res = a < b;
+        document.write('<br>'+res);   // 10<5보다 크기 때문에 false값이 출력됨.
+        
+        res == a == b;
+        document.write('<br>'+res);   // 10==5 데이터값이 같지 않기 때문에 false값이 출력됨.
+
+        // 3. 대입연산자
+        res = a = b;
+        document.write('<br>'+res+'<br>');   // 5
+
+        // 4. 증감연산자 : ++(1씩 변수값에 더한다.), --(1씩 변수값)
+        res = a++; // 변수명 a값을 출력하고 a의 뒤에 1을 증가한다는 뜻
+        document.write('<br>'+res);
+        res = ++a;
+        document.write('<br>'+res)   // 6(위 수식에서 6이 저장됨) + 1 = 7
+
+        // 5. 논리연산자 - &&(and), ||(or), !(not)
+        alert((1>2)&&(1<2))   // 1조건과 2조건 모두 만족하지 않기 떄문에 false
+        alert((1>2)||(1<2))   // 1조건과 2조건 둘중에 하나만 만족하면 true
+
+        // 6. 문자열 결합연산자 : +
+
+        let name, region;
+        name = '홍길동';
+        region = '서울';
+
+        document.write(name+'이(가) 사는 지역은 '+region+'입니다.');
+
+        // 7. 삼항조건연산자 : 조건식?실행문1:실행문2;
+
+        let jumsu = prompt('점수를 입력하세요.');
+
+        jumsu > 60?alert('합격'):alert('불합격');
+
+        // 8. 타입연산자 - typeof(숫자인지 문자인지 데이터의 타입을 구분해준다.)
+
+        document.write('변수 jumsu의 타입은 '+typeof(jumsu)+'입니다.');
+
+        // 실습예제 
+        // 1. 사용자가 입력한 아이디가 'master', 'abcd', 'naver'중 하나만 입력해도 인증이 되며, 패스워드는 '1234'일때 인증이 되도록 결과값이 나오도록 함.
+
+        let id = prompt('아이디를 입력하세요.');
+        let pw = prompt('패스워드를 입력하세요.');
+
+        // 1번 정답
+        ((id=='master')||(id=='abcd')||(id=="naver"))&&(pw=='1234')?alert('인증완료'):alert('인증실패');
+
+        // 2번 정답
+        let join = (id=='master'||id=='abcd'||id=="naver")&&(pw=='1234');
+        let result = join?alert('인증완료'):alert('인증실패');
+
+    </script>
+</head>
+<body>
+    <h2>02_자바스크립트_연산자</h2>
+    <p>자바스크립트 연산자는 사용자가 조건식을 만들어서 원하는 결과를 출력하고자 할 때 사용하는 기호이다.</p>
+    <ul>
+        <li>산술연산자 : +, - , *, /, %(나머지)</li>
+        <li>문자열 결합연산자 : +(문자+문자, 문자+숫자 결합시 사용)</li>
+        <li>비교연산자 : >, < =>, <=, ==, ===</li>
+        <li>대입연산자 : =, += -=</li>
+        <li>증감연산자 : ++(1씩 증가) , --(1씩 감소)</li>
+        <li>논리연산자 : and, or, not</li>
+        <li>삼항조건연산자 : 조건식?조건이맞을때 출력값1:조건이 맞지 않을때 출력값2;</li>
+        <li>타입연산자 - typeof(데이터 타입을 구분하고 형식을 알려줌)</li>
+    </ul>
+</body>
+</html>

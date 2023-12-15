@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 문서 출력방법 4가지</title>
+    <style>
+        footer{background: #333; color: #fff; line-height: 60px; text-align: center;}
+    </style>
+    <script>
+        // HTML문서가 먼저 로딩이되고 나서 SCRIPT가 동작해야 아래 내용이 출력된다.
+        document.getElementById('p02').innerHTML='<h3>문서제목</h3><i>innerHTML속성으로 내용채우기</i>';
+    </script>
+</head>
+<body>
+    <h2>자바스크립트 문서 출력방법 4가지</h2>
+    <p>자바스크립트 언어를 통해 문서에 내용을 출력하는 방법 4가지에 대해 알아본다.</p>
+    <ol>
+        <li>document객체에 write메서드를 사용 - document.write('출력할 내용');</li>
+        <li>window객체를 활용해 메세지 띄우기 - window.alert('출력할 내용');</li>
+        <li>브라우저 개발자모드의 console모드에서 내용 출력하기 - console.log('출력할 내용');</li>
+        <li>document객체의 innerHTML메서드로 내용 출력하기 - document.getElement('id명').innerHTML="출력할 내용";</li>
+    </ol>
+
+    <p id="p02"></p>
+
+    <!-- 내부 스크립트 -->
+    <script>
+        document.write('<p>document.write메서드로 내용 출력하기</p>');
+        window.alert('윈도우 객체를 사용하여 메세지 띄우기');
+        console.log('입력한 내용을 콘솔모드에서 확인하기');
+        document.getElementById('p02').innerHTML='<h3>문서제목</h3><i>innerHTML속성으로 내용채우기</i>';
+    </script>
+
+    <!-- 외부 스크립트 -->
+    <script src="./script/footer.js"></script>
+    
+</body>
+</html>
