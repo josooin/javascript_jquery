@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습예제_제어문을 활용한 쇼핑몰 콘텐츠 탭메뉴 구현하기</title>
+    <link href="./css/reset.css" rel="stylesheet" type="text/css">
+    <style>
+        /* .product *{margin: 0px; height: 0px;} */
+        .photo{
+            width: 470px;
+            border: 3px solid #000;
+            overflow: hidden;
+        }
+        .photo ul{display: flex;}
+        .photo ul li{list-style: none; overflow: hidden;}
+        .photo ul li img{
+            width: 100%;
+            box-sizing: border-box;
+            /* transform: scale(1.1); */
+        }
+        /* .photo ul li a:focus */
+        body{line-height: 30px;}
+    </style>
+</head>
+<body>
+    <h2>실습예제_제어문을 활용한 쇼핑몰 콘텐츠 탭메뉴 구현하기</h2>
+    <p>탭콘텐츠(tab_content) : 제한된 공간안에서 메뉴를 클릭 시 해당 영역안에서만 콘텐츠 내용이 보이도록 하는 콘텐츠 제작 방법이며, 여러개의 메뉴를 통해 다양한 내용을 보여줄 수 있다는 장점이 있다.</p>
+    <p>css로는 라디오버튼을 통해 제작이 가능하며, javascript에서는 반복문을 통해 제작이 가능하다. 또한 jQuery에서는 '문서객체조작'메서드를 통해 제작이 가능해서 어떤 언어로 사용해도 모두 가능.</p><br>
+
+    <h3>cjmall 뷰티용품을 보여주기 위한 탭콘텐츠</h3>
+    <p>이미지 5장을 사용하여 썸네일 이미지 클릭 시 해당 사진 보여주기</p><br>
+
+    <section class="product">
+        <article class="photo">
+            <img src="./images2/product1.jpg" alt="사진1" id="big_img">
+            <!-- 썸네일 이미지 버튼 -->
+            <ul>
+                <li><img src="./images2/product1.jpg" alt="썸네일" class="small"></li>
+                <li><img src="./images2/product2.jpg" alt="썸네일" class="small"></li>
+                <li><img src="./images2/product3.jpg" alt="썸네일" class="small"></li>
+                <li><img src="./images2/product4.jpg" alt="썸네일" class="small"></li>
+                <li><img src="./images2/product5.jpg" alt="썸네일" class="small"></li>
+                <li><img src="./images2/product6.jpg" alt="썸네일" class="small"></li>
+            </ul>
+        </article>
+    </section>
+
+    <script>
+        //큰사진 변경하기 위한 변수 저장하기
+        let b_img = document.querySelector('#big_img');
+
+        //작은 썸네일 사진 변수로 저장하기
+        let s_img = document.querySelectorAll('.small');
+
+        // 반복문을 통해 목록(li)안에 있는 img를 개별적으로 선택하여 각각 '클릭이벤트'를 만든다.
+        for(let i=0;i<s_img.length;i++){  //   i<s_img.length == i<5
+            console.log(s_img[i]); //목록안에 있는 이미지를 출력
+            s_img[i].addEventListener('click', function(){
+                //window.alert('클릭이벤트 실행');
+                let src = this.src; //사용자가 선택한 이미지의 src값을 가져와서 변수에 담는다.
+                console.log(src);//이미지 src값 확인
+                
+                //src변수값을 b_img의 src속성값에 대입하여 이미지가 변경되도록 한다.
+                
+                b_img.setAttribute('src',src);
+                
+                for(let j=0;j<s_img.length;j++){
+                    console.log(s_img[j]);//현재선택한 썸네일 이미지 주소확인
+                    s_img[j].style.border='none'; //기존서식은 모두 없애고나서
+                    this.style.border='3px solid #f00'; //선택한 img만 테두리 적용한다.
+                }
+            });
+        }
+
+    </script>
+
+</body>
+</html>
