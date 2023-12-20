@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_함수실습예제 - 자신의 신장, 몸무게를 입력하여 BMI지수 구하기</title>
+    <style>
+        .orange_color{background-color: #ff9d00;}
+        .green_color{background-color: #0f0;}
+        .blue_color{background-color: #00f;}
+        .purple_color{background-color: #af0dd6;}
+        .red_color{background-color: #f00;}
+    </style>
+</head>
+<body>
+    <h2>02_함수실습예제 - 자신의 신장, 몸무게를 입력하여 BMI지수 구하기</h2>
+    <p>자신의 키(신장), 몸무게(체중)를 입력하여 적정 체중 구하기</p>
+    <ol>
+        <li>신장(m)을 입력하기 위한 명령프롬프트와 체중(kg)을 입력하기 위한 명령프롬프트를 사용</li>
+        <li>함수를 작성하여 신장, 체중값을 사용하여 계산식 작성하기</li>
+        <li>연산된 결과값을 통해 적정체중인지를 비교(if문)하여 결과를 출력한다.</li>
+    </ol>
+    <p>BMI = 체중(KG) ÷ (신장(m) x 신장(m))</p>
+    <p>BMI 지수가 18.5 이하면 저체중, 18.5~23은 정상, 23~25는 과체중, 25~30은 비만, 30~35는 고도비만</p>
+    <p>저체중은 배경색 주황색, 정상은 녹색, 과체중은 파랑, 비만은 보라색, 고도비만은 빨강색 배경으로 지정함.</p>
+    <article>
+        <h3>BMI지수 구하기</h3>
+        <div>
+            <p>신장 : <input type="text" id="height">m 예) 170cm => 1.7</p>
+            <p>체중 : <input type="text" id="weight">kg 예) 60kg => 60</p>
+            <p><input type="button" value="bmi지수 계산하기" id="cal_btn"></p>
+        </div>
+    </article>
+
+    <p id="result">출력결과</p>
+
+    <script>
+        // 1. 사용자가 입력한 데이터 변수에 담기
+        let h, w;
+        const btn =document.getElementById('cal_btn');
+
+        // 2. 입력한 데이터 출력하기
+        btn.addEventListener('click', function(){
+            h =document.getElementById('height').value;
+            w =document.getElementById('weight').value;
+
+            console.log(h); // 값 출력확인
+            console.log(w); // 값 출력확인
+
+            // bmi지수 계산하기 Number(숫자형 데이터) parseInt(정수형 데이터)
+            let sum = parseInt((w)/(Number(h)*Number(h)));
+
+            console.log(sum); // 값 출력
+1.7
+            // if문을 활용하여 숫자 데이터별로 내용 출력하기
+            if(sum<=18.5){
+                document.getElementById('result').innerHTML="<p class='blue_color'><b>저</b>체중입니다.</p>";
+            }else if((sum>18.5)&&(sum<=23)){
+                document.getElementById('result').innerHTML="<p class='green_color'><b>정상</b>체중입니다.</p>";
+            }else if((sum>23)&&(sum<=25)){
+                document.getElementById('result').innerHTML="<p class='orange_color'><b>과</b>체중입니다.</p>";
+            }else if((sum>25)&&(sum<=30)){
+                document.getElementById('result').innerHTML="<p class='purlpe_color'><b>비만</b>입니다.</p>";
+            }else{
+                document.getElementById('result').innerHTML="<p class='red_color'><b>고도비만</b>입니다.</p>";
+            }
+        });
+
+        // 3.
+    </script>
+    
+</body>
+</html>
