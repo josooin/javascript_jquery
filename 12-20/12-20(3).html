@@ -10,10 +10,23 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             grid-gap: 10px;
-        }
-        .gallery li{
             list-style: none;
         }
+        .gallery li:first-child{
+            /* border: 1px solid #f00; */
+            grid-column: 1/4;
+            grid-row: 1/1;
+        }
+        .gallery li:nth-child(2){
+            grid-column: 2/1;
+            grid-row: 2/2;
+        }
+        .gallery li:last-child{
+            /* border: 1px solid #f00; */
+            grid-column: 4/4;
+            grid-row: 1/2;
+        }
+
         .gallery > li > input{width: 150px; height: 50px;}
     </style>
 </head>
@@ -21,7 +34,7 @@
     <h2>03_함수실습예제_모바일 계산기 구현하기</h2>
     <div>
         <ul class="gallery">
-            <li><input type="text" id="result"> <!-- 연산된 결과가 출력되는 양식 --></li>
+            <li><input type="text" id="result" style="width: 463px;"> <!-- 연산된 결과가 출력되는 양식 --></li>
             <li><input type="button" value="1" onclick="cal(1)"></li>
             <li><input type="button" value="2" onclick="cal(2)"></li>
             <li><input type="button" value="3" onclick="cal(3)"></li>
@@ -38,9 +51,7 @@
             <li><input type="button" value="=" onclick="result();"></li>
             <li><input type="button" value="/" onclick="cal('/')"></li>
             <li><input type="button" value="." onclick="cal('.')"></li>
-            <li><input type="button" value="←" onclick="init();"></li>
-            <li><input type="button" value="+/-" onclick="init();"></li>
-            <li><input type="button" value="c" onclick="init();"></li>
+            <li><input type="button" value="c" onclick="init();" style="height: 56px;"></li>
         </ul>
     </div>
 
