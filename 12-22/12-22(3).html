@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습예제_추천광고상품</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.css">
+    <style>
+        .coupang{
+            width: 325px; height: 600px;
+            position: relative;
+        }
+        h3{
+            color: #d73227;
+            font-size: 20px;
+        }
+        .fa-solid{
+            position: absolute;
+            font-size: 60px;
+            top: 270px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .fa-angle-left{left: 0px;}
+        .fa-angle-right{right: 0px;}
+        .p01{
+            color: #521110;
+            font-size: 30px;
+            font-weight: 900;
+            line-height: 0px;
+        }
+        .s01{color: #d73227;}
+        .s02{color: #e99923;}
+        .s03{color: #92ba3e;}
+        .s04{color: #50a3d9;}
+
+    </style>
+</head>
+<body>
+    <h3>HOT! TREND</h3>
+    <p class="p01">추천<span class="s01">광</span><span class="s02">고</span><span class="s03">상</span><span class="s04">품</span></p>
+    <div class="coupang">
+        <img src="./images3/product01.png" alt="coupang_img" id="coupang_img">
+        <i class="fa-solid fa-angle-left" id="left_btn"></i>
+        <i class="fa-solid fa-angle-right" id="right_btn"></i>
+        <span id="page"></span>
+    </div>
+
+    <script>
+        // 새로고침시 사진 랜덤
+        let coupang = ['product01.png','product02.jpg','product03.jpg','product04.jpg','product05.jpg','product06.jpg','product07.jpg','product08.png','product09.jpg','product10.png','product11.jpg','product12.jpg','product13.png','product14.jpg','product15.jpg','product16.jpg','product17.jpg','product18.jpg'];
+
+        let ran_n = Math.floor(Math.random()*18+1);
+        document.write(ran_n); // 출력 테스트 
+
+        document.getElementById('coupang_img').src="./images3/"+coupang[ran_n];
+
+
+        // 클릭 시 사진 이동
+        let n = 1;
+        const l_btn = document.getElementById('left_btn');
+        const r_btn = document.getElementById('right_btn');
+
+        // 2. 페이지 번호 변수선언
+        let page_n = document.getElementById('page');
+
+        // 3. 페이지 번호 출력
+        page_n.innerHTML = n + '/18';
+
+        // 4. 좌, 우 버튼 클릭 시 각각 해당하는 함수 호출하여 이미지 변경하기
+        l_btn.addEventListener('click', function(){
+            if(n==1){
+                n=18;
+            }else{
+                n--
+            }
+            page_n.innerHTML =  n + '/18';
+            document.getElementById('coupang_img').src='./images3/product'+n+'.jpg';
+        });
+
+        r_btn.addEventListener('click', function(){
+      // window.alert('오른쪽버튼 클릭');
+      //1, 2, 3, 4, 5, 1....
+            if(n==18){
+                n=1;
+            }else{
+                n++;
+            }
+            page_n.innerHTML =  n + '/18';
+            document.getElementById('coupang_img').src='./images3/product'+n+'.jpg';
+        });
+
+
+
+    </script>
+    
+</body>
+</html>
