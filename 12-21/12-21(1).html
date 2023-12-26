@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01_자바스크립트기초_이벤트(event)</title>
+  <style>
+    #modal{
+      width:100%;height:100%;
+      background:rgba(0,0,0,.8);
+      position:fixed;
+      top:0px;left:0px;
+      display:none;
+      transition:0.5s;
+    }
+    .modal_inner{
+      position:absolute;
+      left:50%;top:50%;
+      transform:translate(-50%, -50%);
+      width:380px;height:430px;
+      background:#fff;
+    }
+    .banner p{font-size:13px;}
+    .banner input[type=button]{
+      border:none;background:#fff;
+      float:right;padding:0px 14px;
+    }
+
+    #banner{
+      width:380px;height:152px;
+      border:3px solid #000;
+      padding:15px;
+    }
+  </style>
+</head>
+<body>
+  <h2>01_자바스크립트기초_이벤트(event)</h2>
+  <p>EVENT : 특별한 상황, 행사, 사건</p>
+  <p>웹페이지에서는 '클릭','오버','아웃','드래그','더블클릭','스크롤','키보드' 등의 행위를 했을때 일어나는 사건을 '이벤트'라고 한다.</p>
+
+  <h3>1. 이벤트의 종류</h3>
+  <ul>
+    <li>onclick(); - 마우스로 해당요소를 클릭했을때 이벤트 발생</li>
+    <li>ondblclick(); - 마우스로 해당요소를 더블클릭하였을 때 이벤트 발생</li>
+    <li>onkeydown(); - 키보드를 눌렀을때 이벤트 발생</li>
+    <li>onkeypress(); - 키보드를 눌렀다가 뗐을때 이벤트 발생</li>
+    <li>onkeyup(); - 키보드를 놓았을 때 이벤트 발생</li>
+    <li>onmousedown(); - 마우스로 버튼을 눌렀을 때 이벤트 발생</li>
+    <li>onmouseup(); - 마우스로 버튼을 놓았을 때 이벤트 발생</li>
+    <li>onmouseover(); - 마우스로 버튼을 올렸을 때 이벤트 발생</li>
+    <li>onmouseout(); - 마우스로 버튼을 올렸다가 떼었을 때 이벤트 발생</li>
+  </ul>
+
+  <h3>모달윈도 == 팝업레이어</h3>
+  <p>모달윈도(modal window)는 사용자 인터페이스(UI)디자인 개념에서 자식윈도우에서 부모 윈도우로 돌아가기전에 사용자의 상호 동작을 요구하는 창을 말한다.</p>
+  <P>모달 윈도우는 부모창을 어둡게 하고 자식요소가 화면의 가운데 중앙에 배치하도록 하며, 오른쪽 상단에 '닫기'버튼을 만들어서 닫을 수 있도록 한다.</P>
+
+  <div id="modal">
+    <div class="modal_inner">
+      <a href="#" title="이벤트 바로가기">
+        <img src="./images/banner.jpg" alt="광고배너">
+      </a>
+      <p class="banner">
+        <input type="checkbox" id="ch_b">
+        <label>오늘 하루 열지 않음</label>
+        <input type="button" value="닫기" id="close_btn">
+      </p>
+    </div>
+  </div>
+
+  <div id="banner">
+    <img src="./images/mbn04.png" alt="" id="b_img">
+  </div>
+
+  <script>
+    //1. 변수선언
+    let modal = document.getElementById('modal');
+    let c_btn = document.getElementById('close_btn');
+
+    //2. 문서가 로딩이 끝나면 modal이 보이도록 한다.
+    modal.style.display='block';
+
+    //3. 닫기버튼을 클릭시 #modal을 숨긴다.
+    c_btn.addEventListener('click', function(){
+      //modal.style.display='none';
+
+      //시간에 맞춰 함수를 실행함.
+      modal.style.opacity='0';
+      setTimeout(display_none, 1000);
+    });
+    function display_none(){
+      modal.style.display='none'; //1번
+    }
+
+    // 배너이미지 (#b_img)에 마우스 오버시 이미지 변경하고 다시 마우스 아웃시 원래이미지 나오게 하기
+    //1. 변수선언
+    const b_img = document.getElementById('b_img');
+    // const banner = document.getElementById('banner');
+
+    b_img.addEventListener('mouseover', function(){
+      this.src='./images/mbn04ov.png'; // 기능
+      banner.style.border='3px solid #f00'; //서식
+    });
+
+    b_img.addEventListener('mouseout', function(){
+      this.src='./images/mbn04.png'; //기능
+      banner.style.border='3px solid #000'; //서식
+    });
+  </script>
+
+</body>
+</html>
