@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트_실전예제_캐러셀(carousel)슬라이드</title>
+    <style>
+    *{margin:0px;padding:0px;}
+    ul, li{list-style:none;}
+    a{text-decoration:none;color:#333;}
+    h2, p{padding:10px;}
+    .slide_wrapper{
+        width:1200px;height:468px; /* 반응형으로 바꾸기 1. width:100% */
+        margin:0px auto;
+        background:#ff0;
+        border:5px solid #f00;
+        position:relative;
+    }
+    .slide{
+        position: absolute;
+        left: 0px;
+        display:flex;
+        width:2040px; /* 반응형으로 바꾸기 2. width:500%(사진개수) */
+        transition: 0.5s;
+    }
+    .slide li{margin-right:60px;} /* 반응형으로 바꾸기 3. width:100% */
+    .slide li:last-child{margin-right:0px;}
+
+    /* 좌, 우버튼 */
+    #l_btn, #r_btn{
+        padding:18px 10px;
+        background:rgba(0,0,0,.7);
+        position:absolute;top:45%;
+        color:#fff;
+    }
+    #l_btn{left:0px;}
+    #r_btn{right:0px;}
+    .fa-solid{
+        font-size:30px;
+        position:absolute;bottom:10px;
+        color:#666;
+    }
+    .fa-stop{left:80px;}
+    .fa-play{left:40px;}
+    
+    </style>
+    <!-- 아이콘폰트 주소 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- 슬라이드 스크립트 -->
+    <script src="./script/slide.js" defer></script> <!-- defer 문서 출력 순서를 바꿔줌-->
+
+</head>
+<body>
+    <h2>자바스크립트_실전예제_캐러셀(carousel)슬라이드</h2>
+    <p>캐러셀(carousel)은 CSS 3D 트랜스폼과 약간의 JavaScript로 만들어진, 일련의 콘텐츠를 순환시키기 위한 슬라이드쇼입니다. 일련의 '이미지', '텍스트' 혹은 '사용자 정의 마크업'으로 동작합니다. 그리고 '이전/다음'의 컨트롤이나 '위치 표시(인디게이터, indicator)'도 지원합니다.</p>
+
+    <article class="slide_wrapper">
+        <ul class="slide">
+        <li><div><a href="#" title=""><img src="./images/product01.jpg" alt=""></a></div></li>
+        <li><div><a href="#" title=""><img src="./images/product02.jpg" alt=""></a></div></li>
+        <li><div><a href="#" title=""><img src="./images/product03.jpg" alt=""></a></div></li>
+        <li><div><a href="#" title=""><img src="./images/product04.jpeg" alt=""></a></div></li>
+        <li><div><a href="#" title=""><img src="./images/product05.jpg" alt=""></a></div></li>
+    </ul>
+    <a href="#" title="이전" id="l_btn">이전</a>
+    <a href="#" title="다음" id="r_btn">다음</a>
+    <i class="fa-solid fa-stop"></i>
+    <i class="fa-solid fa-play"></i>
+    </article>
+
+
+</body>
+</html>

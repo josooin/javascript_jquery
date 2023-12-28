@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트기초_내장객체_윈도우객체(window)</title>
+    <style>
+        *{margin: 0px; padding: 0px;}
+        .popup{
+            position:fixed;
+            left:0px;top:0px;
+            width:100%;height:100%;
+            background:rgba(0,0,0,.8);
+        }
+        .inner{
+            position:absolute;
+            left:50%;top:50%;
+            transform:translate(-50%, -50%);
+            width:380px;height:430px;
+        }
+        .popup img{display:block;}
+        .popup input[type=button]{
+            border:none;
+            width:100%;
+            display:block;line-height:36px;
+            background:#000;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <h2>자바스크립트기초_내장객체_윈도우(브라우저)객체(window)</h2>
+    <p>브라우저 객체는 사용자가 사용하는 웹브라우저의 창에서 다양한 동작이나 속성을 설정하고자 할 때 사용하는 객체이다.</p>
+
+    <h3>window객체</h3>
+    <p>window객체는 브라우저 객체중 최상위 객체로서 현재 실행되고 있는 브라우저창을 말함.</p>
+
+    <h3>window객체의 속성</h3>
+    <ul>
+        <li>document</li>
+        <li>frameElement</li>
+        <li>innerHeight</li>
+        <li>innerWidth</li>
+        <li>location</li>
+        <li>name</li>
+        <li>screenX</li>
+        <li>screenY</li>
+        <li>screenX, screenY</li>
+        <li>sessionStorge</li>
+    </ul>
+
+    <h3>window객체의 메서드</h3>
+    <ul>
+        <li>alert() - 윈도우창에서 경고창(메세지)를 띄울때 사용</li>
+        <li>blur() - 현재창에서 포커스를 제거</li>
+        <li>close() - 현재창을 닫기</li>
+        <li>confirm() - 확인, 취소 버튼이 있는 확인창을 표시함</li>
+        <li>focus() - 현재창에 포커스(초점)를 부여</li>
+        <li>moveBy() - 현재창을 지정한 크기만큼 이동</li>
+        <li>moveTo() - 현재창을 지정한 좌표로 이동</li>
+        <li>open() - 새로운 창을 열기</li>
+        <li>prompt() - 사용자가 입력 가능한 프롬프트 창을 열기</li>
+        <li>resizeTo() - 동적으로 브라우저 창의 크기를 조절</li>
+        <li>scroll() - 문서의 특정 위치로 스크롤 하기</li>
+        <li>sizeToContent() - 내용에 맞게 창의 크기를 조절</li>
+        <li>stop() - 로딩 중지</li>
+    </ul>
+
+    <input type="button" value="alert();" id="btn01">
+    <input type="button" value="cinfirm();" id="btn02">
+    <input type="button" value="prompt();" id="btn03">
+    <input type="button" value="open();" id="btn04">
+
+    <div class="popup">
+        <div class="inner">
+            <img src="./images/banner02.jpg" alt="광고배너">
+            <input type="button" value="닫기" id="c_btn">
+        </div>
+    </div>
+
+    <script>
+        // 1. btn01 클릭 시 alert();
+        const b1 = document.getElementById('btn01');
+        const b2 = document.getElementById('btn02');
+        const b3 = document.getElementById('btn03');
+        const b4 = document.getElementById('btn04');
+
+        b1.addEventListener('click', function(){
+            alert('사용자에게 알림메세지를 전달합니다');
+        });
+
+        // 2. btn02 클릭 시 confirm();
+        b2.addEventListener('click', function(){
+            confirm('확인/취소메세지 띄우기');
+        });
+
+        // 3. btn03 클릭 시 prompt
+        b3.addEventListener('click', function(){
+            prompt('사용자가 입력할 수 있는 입력폼을 띄웁니다.');
+        });
+
+        // 4. btn04 클릭 시 문서열기 = open();
+        b4.addEventListener('click', function(){
+            // window.open('12-27(1).html');
+            // window.open('파일경로와 파일이음.확장자','옵션','width=가로크기, height=세로크기');
+            // window.open('12-27(3).html','_blank','toolbar=yes, scrollbars=yes, Resizable=no, top=100, left=1000, width=360px, height=320px');
+            window.open('12-27(3).html','_blank','toolbar=yes, scrollbars=no, Resizable=no, top=300, left=800, width=360px, height=380px');
+        });
+
+        //브라우저 팝업차단 기능으로 인해 볼수없음. 차단기능해제시만 보임.
+        window.open('12-27(3).html','_blank','scrollbars=no, width=360px, height=380px');
+
+        // 모달윈도우에서 '닫기'버튼 클릭시 .popup숨기기
+        let c_btn = document.getElementById('c_btn');
+
+        //3. 닫기버튼을 클릭시 #modal을 숨긴다.
+        c_btn.addEventListener('click', function(){
+        //modal.style.display='none';
+
+        //시간에 맞춰 함수를 실행함.
+        modal.style.opacity='0';
+        setTimeout(display_none, 1000);
+    });
+    function display_none(){
+        modal.style.display='none'; //1번
+    }
+        
+    </script>
+
+    <p>모달윈도(modal window)
+    모달윈도(Modal Window)는 사용자 인터페이스(UI)디자인 개념에서 자식 윈도에서 부모 윈도우로 돌아가기 전에 사용자의 상호동작을 요구하는 창을 말한다. 모달 윈도우는 부모창을 배경으로 어둡게 하고 자식요소가 화면의 가운데 중앙에 배치하도록 하며, 오른쪽 상단에 '닫기'버튼을 만들어서 닫을 수 있도록 한다.</p>
+
+    <h3>모달윈도 띄우기 4가지 연습하기</h3>
+    <ol>
+        <li>배경없이 광고만띄우기</li>
+        <li>배경어둡게 투명도 적용하여 광고띄우기</li>
+        <li>버튼 클릭하면 모달윈도 띄우기</li>
+        <li>사용자가 페이지 접송하면 모달윈도 띄우기</li>
+        <li>닫기 버튼 클릭시 모달윈도 숨기기</li>
+    </ol>
+
+</body>
+</html>
