@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02제이쿼리 선택자</title>
+    <!-- 1. 제이쿼리 라이브러리 연결하기 -->
+    <script src="./script/jquery-3.7.1.js"></script>
+
+    <!-- 2. 제이쿼리 랩퍼작성하기 -->
+    <script>
+        $(document).ready(function(){ // 문서가 로딩이 완료되면 제이쿼리를 실행한다.
+            // 1. 기본선택자 4가지
+            $('*').css({ // 전체선택자
+                'padding':'0px',
+                'margin':'0px'
+            });
+            $('#title').css('color', '#f00'); //id선택자
+            $('.p01').css('background','#ccc'); // class선택자
+            $('h3').css('color','#00f'); // tag선택자
+
+            $('ul > li').css('padding', '10px'); // 자손선택자
+            $('body li').css('background', '#0f0'); // 후손선택자
+            $('ul > li:nth-child(2n+1)').css('background','#ccc'); // 구조선택자 홀수번째
+            $('ul > li:nth-child(2n)').css('background','#ff0'); // 구조선택자 짝수번째
+            $('h3+ul').css('border', '3px solid #f00'); // 동위선택자
+
+            $('ul > li:odd').css('font-style','italic'); // 탐색선택자 0, 2, 4, 6순서로
+            $('ul > li:even').css('text-decoration','underline'); // 탐색선택자
+            $('p[class]').css('font-size', '20px'); //속성선택자
+        });
+    </script>
+</head>
+<body>
+    <h2 id="title">02제이쿼리 선택자</h2>
+    <p class="p01">제이쿼리에서는 css에서 사용하던 선택자를 활용하여 서식을 적용할 수 있는데, 제이쿼리는 css보다 좀 더 세밀하게 선택할 수 있고, 그 개수도 많다.</p>
+    <p class="p02">http://oscarotero.com/jquery/ = API 참고사이트의 왼쪽 'SELECTORES'에서 확인</p>
+
+    <h3>제이쿼리 선택자 연습하기</h3>
+    <ul>
+        <li>아이디 선택자(#id)</li>
+        <li>클래스 선택자(.class)</li>
+        <li>태그 선택자</li>
+        <li>그룹 선택자</li>
+        <li>자손, 후손 선택자</li>
+        <li>구조 선택자(nth-child)</li>
+        <li>동위 선택자(+, ~)</li>
+        <li>탐색 선택자(odd, even)</li>
+        <li>속성 선택자(선택자[속성명=값], 선택자[속성])</li>
+    </ul>
+
+    <pre>
+        .css()메소드 사용법
+        서식이 1개일 때       .css('속성', '값');
+        서식이 2개 이상일 때  .css('속성', '값').css('속성', '값').css('속성', '값')
+        서식이 2개 이상일 때  .css({'속성':'값','속성':'값','속성':'값'})
+    </pre>
+
+</body>
+</html>

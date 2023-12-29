@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01제이쿼리 소개와 기본문법</title>
+    <!-- 제이쿼리 라이브러리 연결하기 -->
+    <script src="./script/jquery-3.7.1.js"></script> <!-- <= 인터넷 연결 필요 X -->
+
+    <!-- 제이쿼리 라이브러리 최적화 버전 -->
+    <script src="./script/jquery-3.7.1.min.js"></script> <!-- <= 인터넷 연결 필요 X -->
+
+    <!-- 제이쿼리 라이브러리 CDN방식으로 연결하기 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>"></script> <!-- <= 인터넷 연결 필요 O -->
+
+    <!-- 제이쿼리 내용 작성하기(랩퍼) -->
+    <script>
+        $(document).ready(function(){ // 문서객체(html문서)가 로딩이 완료되면 제이쿼리 내용을 실행한다.
+            // 1. 자바스크립트로 제목 서식 변경하기
+            // 변수선언
+            let title01;
+            title01 = document.getElementById('title01');
+            title01.style.color='#f00'
+            title01.style.background='#ff0'
+
+            // 2. 제이쿼리 라이브러리로 제목 서식 변경하기
+            $('h3').css({
+                'color':'#00f',
+                'background':'#0f0'
+            })
+            $('p').css('color','brown');
+            $('li').css('background','#ccc'); //두개 같음
+
+            // let list = document.querySelectorAll('li'); //두개 같음
+            // for(let i=0;i<list.length;i++){
+            //     list[i].style.background='#ccc';
+            // }
+        });
+    </script>
+
+
+</head>
+<body>
+    <h2 id="title01">>01제이쿼리 소개와 기본문법</h2>
+    <p>제이쿼리란? 자바스크립트의 생산성을 향상시켜주는 자바스크립트의 '라이브러리언어'이다.<br>
+    자바스크립트 라이브러리란? 자주 사용하느 코드들을 재사용 할 수있는 형태로 가공하여 프로그래밍의 효율성을 높여주도록 만든 코드들의 집합이다.</p>
+
+    <h3>1. 제이쿼리의 특징</h3>
+    <ul>
+        <li>앨리먼트(HTML태그 요소)를 선택하는 강력한 기능을 제공한다.(css선택자보다 많음)</li>
+        <li>선택된 앨리먼트를 제어할 수 있는 다양한 함수를 제공한다.</li>
+        <li>자바스크립트의 자주 사용하느 기능을 라이브러리화한 언어이다.</li>
+    </ul>
+
+    <h3>2. 제이쿼리 라이브러리 연결방법</h3>
+    <ul>
+        <li>제이쿼리 라이브러리 파일을 직접 연결하기 - 제이쿼리 공식사이트에서 라이브러리 파일(.js)을 다운로드 받아서 html문서의 head영역 안에 붙여널기 한다.</li>
+        <li>제이쿼리 라이브러리 CDN방식으로 연결하기 JQERY.COM페이지에서 오른쪽 '다운로드' 클릭, 페이지로 이동하고 아래 페이지로 내려가면 'GOOGLE CDN'메뉴 클릭하여 나온 페이지에서 1x, 2x, 3x버전 선택하여 복사, html head영역안에 붙여넣기 한다.</li>
+    </ul>
+
+    <h3>3. 제이쿼리 문법(작성법)</h3>
+    <ul>
+        <li>$('선택대상').메서드;</li>
+        <li>jquery('선택대상').메서드;</li>
+    </ul>
+
+    <h3>4. 제이쿼리 라이브러리에서 $의 역활</h3>
+    <p>제이쿼리에서는 '$'기호를 맨앞에 넣고 시작을 하는데 이것은 괄호()안에 넣을 대상을 선택하기 위함이다. 예) $('h1'), $(window), $('#id'), $("input[type='text']")..... </p>
+
+    <h3>5. 제이쿼리에서 '$'기호 안에 들어가는 대상 3가지</h3>
+    <ul>
+        <li>html태그</li>
+        <li>css선택자</li>
+        <li>자바스크립트 객체(document, window.....)</li>
+    </ul>
+
+    <h3>6. 제이쿼리에서 사용하는 wrapper</h3>
+    <li>$(document).ready(function(){실행할 내용;});</li>
+    <li>$(function(){실행할 내용;});</li>
+    <li>jquery(function(){실행할 내용;});</li>
+    <li>jquery(document).ready(function(){실행할 내용;});</li>
+
+
+</body>
+</html>
