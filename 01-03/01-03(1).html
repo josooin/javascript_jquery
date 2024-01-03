@@ -31,33 +31,47 @@
       b1.click(function(){
         $('.banner').show();
       });
+
       b2.on('click dbclick',(function(){
         $('.banner').hide();
       }));
+
       b3.click(function(){
-
+        $('.banner').toggle(); // show, hide 둘다 사용가능
       });
+
       b4.click(function(){
-
+        $('.banner').slideDown();
       });
+
       b5.click(function(){
-
+        $('.banner').slideUp();
       });
+
       b6.click(function(){
-
+        $('.banner').slideToggle();
       });
+
       b7.click(function(){
-
+        $('.banner').fadeIn();
       });
+
       b8.click(function(){
-
+        $('.banner').fadeOut();
       });
+
       b9.click(function(){
-
+        $('.banner').fadeToggle();
       });
+
       b10.click(function(){
-
+        $('.banner').fadeTo(3000, 0.9); // 시간과 투명도를 조절한다.
       });
+
+      // 효과메서드 뒤에 괄호에는 'fast', 'normal', 'slow' 값을 설정할 수 있고 또는 시간 1/1000 = 1초라는 시간값을 사용할 수 있음
+
+      // 예) show => show('fast'), toggle(500), showDown(1000)
+
     });
   </script>
 </head>
@@ -85,7 +99,7 @@
   <input type="button" value="fadeIn" id="btn07">
   <input type="button" value="fadeOut" id="btn08">
   <input type="button" value="fadeToggle" id="btn09">
-  <input type="button" value="fadeTo()" id="btn010">
+  <input type="button" value="fadeTo()" id="btn10">
 
   <div class="banner">
     <img src="./images/product.jpg" alt="배너">
