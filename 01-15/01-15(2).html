@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제_제이쿼리 문서객체 내용추가 메서드를 활용한 실시간 검색순위</title>
+</head>
+<style>
+  .box{
+    width: 350px;
+    background: #ccc;
+  }
+  .boxIn{padding: 20px;}
+  .boxIn > h3{
+    border-bottom: 2px solid #00f;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  .boxIn ul{
+    height: 150px;
+    border: 1px solid #f00;
+  }
+  .boxIn ul li{
+    list-style: none;
+  }
+  .boxIn a{
+    display: block;
+    font-size: 13px;
+    line-height: 2rem;
+    color: #333;
+    text-decoration: none;
+  }
+  .boxIn ul li:first-child a{
+    font-size: 18px;
+    line-height: 1.4rem;
+    font-weight: bold;
+  }
+  .boxIn ul li:nth-child(2) a{
+    font-size: 16px;
+    line-height: 1.4rem;
+    margin-top: 4px;
+  }
+
+  .box2{
+    width: 900px;
+    background: #f5f7f8;
+    /* overflow: hidden; */
+  }
+  .boxIn2{
+    padding: 20px;
+    display: flex;
+    height: 40px;
+  }
+  .boxIn2 select{
+    font-size: 14px;
+    padding: 10px;
+    height: 40px;
+  }
+  .boxIn2 ul{
+    height: 40px;
+    /* border: 1px solid #f00; */
+    overflow: hidden;
+    transform: translateY(-15px);
+  }
+  .boxIn2 ul li{
+    list-style: none;
+  }
+  .boxIn2 a{
+    /* transform: translateY(-20px); */
+    display: block;
+    font-size: 15px;
+    line-height: 2rem;
+    color: #333;
+    text-decoration: none;
+  }
+</style>
+<body>
+  <h2>실습예제_제이쿼리 문서객체 내용추가 메서드를 활용한 실시간 검색순위</h2>
+
+  <div class="box">
+    <div class="boxIn">
+      <h3>실시간 검색순위</h3>
+      <ul>
+        <li><a href="#" title="">keyword1</a></li>
+        <li><a href="#" title="">keyword2</a></li>
+        <li><a href="#" title="">keyword3</a></li>
+        <li><a href="#" title="">keyword4</a></li>
+        <li><a href="#" title="">keyword5</a></li>
+        <li><a href="#" title="">keyword6</a></li>
+        <li><a href="#" title="">keyword7</a></li>
+        <li><a href="#" title="">keyword8</a></li>
+        <li><a href="#" title="">keyword9</a></li>
+        <li><a href="#" title="">keyword10</a></li>
+      </ul>
+    </div>
+  </div>
+  <br><br><br><br><br><br><br><br><br><br>
+
+  <div class="box2">
+    <div class="boxIn2">
+      <select>
+        <option value="">분야별 뉴스</option>
+      </select>
+      <ul>
+        <li><a href="#" title="">한국경제TV코스피, 강보합 마감…9거래일만에 '반등'
+          동아일보한동훈 “與 귀책사유로 재보궐땐 후보 안낼것”</a></li>
+        <li><a href="#" title="">블로터SKT·KT·LGU+ 협력사 옵티코어, 스크린 도어·레이저 장비로 눈 돌렸다…왜?[통신 강소 모니터]
+          헬스조선다이어트 운동 의욕, 과하면 근육 녹아… '이 증상' 주의해야</a></li>
+        <li><a href="#" title="">[마켓뷰] 코스피, 9거래일 만에 겨우 반등… 코스닥은 850선 ‘뚝’</a></li>
+        <li><a href="#" title="">TV조선한동훈 "우리 당 귀책 재보궐, 후보 안 낸다"
+          비즈워치청년층 어쩌나…빚더미에 눌린 20대</a></li>
+        <li><a href="#" title="">미디어오늘류호정 정의당 탈당 "민주당 도움없이 못사는 당 못참겠다"</a></li>
+        <li><a href="#" title="">매경이코노미‘3억 버는 한강뷰 아파트’…오늘 ‘줍줍’ 청약 뜬다는데</a></li>
+        <li><a href="#" title="">TV조선한동훈 "우리 당 귀책 재보궐, 후보 안 낸다</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 제이쿼리 라이브러리 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+
+    // 시간객체
+    // setInterval(함수명, 반복할 시간); - 일정시간마다 함수나 내용을 반복호출하여 실행. 애용실행
+    // setTimeout(내용, 반복할 시간); - 일정시간 지난 후 함수를 호출하여 한번 내용 실행.
+
+    setInterval(function(){
+      // console.log('내용 반복출력')
+
+      // 변수선언
+      let boxIn = $('.boxIn ul'); // 목록태그의 부모요소
+      let boxRow = $('.boxIn ul li:first'); // boxRow 변수의 첫번째  li요소를 변수에 저장
+      let ARea = ()=> { // 'function'을 '=>'로 대체가능
+      boxRow.appendTo(boxIn).show(300); // 첫째 li태그를 ul태그의 마지막요소에 자리 배치(위치변경)
+      }
+
+      boxRow.hide(300, ARea); // boxRow요소가 숨겨지고 나면 ARea에 저장된 콜백함수가 실행됨.
+
+    }, 3000);
+
+    setInterval(function(){
+    
+    let boxIn2 = $('.boxIn2 ul'); // 목록태그의 부모요소
+      let boxRow2 = $('.boxIn2 ul li:first'); // boxRow 변수의 첫번째  li요소를 변수에 저장
+      let ARea = ()=> { // 'function'을 '=>'로 대체가능
+      boxRow2.appendTo(boxIn2).show(300); // 첫째 li태그를 ul태그의 마지막요소에 자리 배치(위치변경)
+      }
+
+      boxRow2.hide(300, ARea); // boxRow요소가 숨겨지고 나면 ARea에 저장된 콜백함수가 실행됨.
+
+    }, 3000);
+
+  });
+</script>
+</body>
+</html>

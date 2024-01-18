@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제이쿼리 문서객체조작_채팅앱 구현하기</title>
+  <style>
+    *{margin: 0px; padding: 0px;}
+    #wrap{
+      margin: 60px 0px 0px 100px;
+      width: 400px;
+      box-shadow: 0px 2px 4px #ccc;
+    }
+    header{
+      background: #fff;
+      padding: 30px 8px 8px 8px;
+      position: relative;
+    }
+    header .btn{
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      border: none;
+      position: absolute; top: 8px;
+    }
+    header #close{background-color: #FF5F58;}
+    header #minbtn{background-color: #FFBC2D; left: 26px;}
+    header #maxbtn{background-color: #27C940; left: 44px;}
+    header img{
+      width: 80px;
+      border: 1px solid #ccc;
+      vertical-align: middle;
+    }
+    header span{
+      font-size: 14px;
+      font-weight: bold;
+      margin-left: 5px; color: #343434;
+    }
+
+    /* 채팅창 영역서식 */
+    .chatbox{
+      height: 400px;
+      background: #BACEE0;
+      padding: 10px;
+      position: relative;
+      overflow-y: scroll;
+    }
+    /* 말풍선서식 */
+    .chatbox > div{
+      margin: 5px 0px;
+      max-width: 300px;
+      font-size: 14px;
+      display: inline-block;
+      position: relative;
+    }
+    .bubble01{
+      background: #fff;
+      border-radius: 14px 14px 14px 0px;
+      padding: 7px 15px 7px 15px;
+      float: left; clear: both;
+    }
+    .bubble02{
+      background: #FFEB33;
+      border-radius: 14px 14px 0px 14px;
+      padding: 7px 15px 7px 15px;
+      float: right; clear: both
+    }
+
+    /* 푸터서식 */
+    .txt_box{
+      background-color: #fff;
+      padding: 10px;
+      display: flex;
+    }
+    .txt_box textarea{
+      height: 60px;
+      width: calc(88% - 50px);
+      border-radius: 2%;
+      background: #fff;
+      border: 0.5px solid #d7d7d7;
+      resize: none;
+      font-size: 14px;
+      padding: 10px;
+    }
+    #send{
+      background-color: #4a90e2;
+      width: 60px;
+      height: 60px;
+      border: none;
+      color: #fff;
+      border-radius: 3px;
+      margin-left: 10px;
+    }
+  </style>
+  <!-- 제이쿼리 라이브러리 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+
+      // 1. 버튼변수
+      const send = $('#send');
+
+      // 2. 버튼 클릭시 텍스트박스안에 내용을 변수에 담아 출력한다.
+      send.click(function(){
+        // alert('클릭됩니다');
+        let talk = $('textarea').val();
+        // alert(talk);
+        $('.chatbox').append('<div class= "bubble02">' + talk + '</div>');
+        $('textarea').val(''); // 기존 입력된 내용은 없앰.
+      });
+
+    });
+  </script>
+</head>
+<body>
+  <h2>제이쿼리 문서객체조작_채팅앱 구현하기</h2>
+  <ul>
+    <li>속성메서드 : val()</li>
+    <li>속성메서드 : attr()</li>
+    <li>클래스조작 메서드 : addClass</li>
+  </ul>
+
+  <div id="wrap">
+    <!-- 버튼 3, 캐릭터 사진과 이름 -->
+    <header>
+      <input type="button" class="btn" id="close">
+      <input type="button" class="btn" id="minbtn">
+      <input type="button" class="btn" id="maxbtn">
+      <img src="./images/다운로드.jpg" alt="춘식이">
+      <span>질문 받습니다...</span>
+    </header>
+
+    <!-- 대화창 -->
+    <section class="chatbox">
+      <div class="bubble01">자니?</div>
+      <div class="bubble01">자는구나</div>
+      <div class="bubble01">잘자...</div>
+      <div class="bubble02">;;</div>
+    </section>
+
+    <!-- 입력창 -->
+    <footer class="txt_box">
+      <textarea placeholder="대화내용이 들어갑니다." id="" cols="30" rows="10"></textarea>
+      <input type="button" value="전송" id="send">
+    </footer>
+  </div>
+  <br><br><br><br><br>
+</body>
+</html>

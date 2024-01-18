@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>미에로화이바 반응형웹</title>
+  <!-- 초기화 -->
+  <link rel="stylesheet" href="./css/reset.css" type="text/css">
+  <!-- 공통서식(글꼴) -->
+  <link rel="stylesheet" href="./css/base.css" type="text/css">
+  <!-- pc화면 해상도일때 적용되는 서식 -->
+  <link rel="stylesheet" href="./css/pc.css" type="text/css">
+  <!-- tablet화면 해상도일때 적용되는 서식 -->
+  <link rel="stylesheet" href="./css/tablet.css" type="text/css">
+  <!-- mobile화면 해상도일때 적용되는 서식 -->
+  <link rel="stylesheet" href="./css/mobile.css" type="text/css">
+
+  <!-- 아이콘폰트 주소 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+<body>
+  <!-- 헤더영역 시작 -->
+  <header>
+    <h1>
+      <a href="index.html" title="메인페이지로 바로가기">
+        <img src="./images/logo2.png" alt="상단로고">
+      </a>
+    </h1>
+
+    <!-- 모바일버전에서 나오는 토글버튼(햄버거) -->
+    <div id="toggle">
+      <span>&nbsp;</span>
+      <span>&nbsp;</span>
+      <span>&nbsp;</span>
+    </div>
+
+    <!-- 메인메뉴 -->
+    <nav class="gnb">
+      <ul>
+        <li><a href="#" title="미에로">미에로<i class="fas fa-angle-down"></i></a></li>
+        <li><a href="#" title="제품소개">제품소개<i class="fas fa-angle-down"></i></a></li>
+        <li><a href="#" title="미에로스토리">미에로스토리<i class="fas fa-angle-down"></i></a></li>
+        <li><a href="#" title="미에로이벤트">미에로이벤트<i class="fas fa-angle-down"></i></a></li>
+        <li><a href="#" title="공지사항">공지사항<i class="fas fa-angle-down"></i></a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <!-- 메인영역 시작 -->
+  <main>
+    <article class="visual">
+      <h2>메인슬라이드</h2>
+      <div class="slide1">
+        <span>이제 짜릿하게 즐기자!<br>
+          미에로화이바 스파클링 제로</span>
+          <img src="./images/mslide1.jpg" alt="메인이미지1">
+      </div>
+      <div class="slide2">
+        <span>마시는 식이섬유<br>
+          미에로화이바</span>
+          <img src="./images/mslide2.jpg" alt="메인이미지2">
+      </div>
+      <div class="slide3">
+        <img src="./images/mslide3.jpg" alt="메인이미지3">
+      </div>
+      <!-- 공통 ui구성요소 sns, 콘트롤버튼, 좌우버튼 -->
+      <!-- sns아이콘 -->
+      <ul class="sns">
+        <li><a href="#" title=""><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="#" title=""><i class="fab fa-instagram"></i></a></li>
+        <li><a href="#" title=""><i class="fab fa-youtube"></i></a></li>
+      </ul>
+
+      <!-- 좌, 우 방향버튼 -->
+      <ul class="s_btn">
+        <li><img src="./images/left.png" alt="이전버튼"></li>
+        <li><img src="./images/right.png" alt="다음버튼"></li>
+      </ul>
+
+      <!-- 콘트롤버튼 -->
+      <ul class="ctrl_btn">
+        <li class="on">&nbsp;</li>
+        <li>&nbsp;</li>
+        <li>&nbsp;</li>
+      </ul>
+
+    </article>
+  </main>
+
+  <!-- 푸터영역 시작 -->
+  <footer></footer>
+
+  <!-- 제이쿼리 라이브러리 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+
+      // 1. 변수선언
+      const l_btn = $('.visual .s_btn li:first-child');//좌측버튼
+      const r_btn = $('.visual .s_btn li:last-child');//우측버튼
+      const c_btn = $('.visual .ctrl_btn li'); //콘트롤 버튼
+      let v_slide_img = $('.visual > div');//슬라이드 이미지
+
+      let i = $('.visual .ctrl_btn li').index(); //0값
+
+      //2. 움직이는 함수 = 서서히 사라지고 나타나는 효과
+      function fadeInOut(){
+        //console.log('시간함수호출');
+        v_slide_img.fadeOut(); //보이는 이미지 숨기고
+        $('.visual .ctrl_btn li').removeClass('on'); //콘트롤버튼 서식 모두 제거
+
+        if(i==2){  //만약에 마지막 이미지라면
+          i=0; //처음이미지가 보이게하고
+        }else{ //그렇지 않으면
+          i++; //다음 이미지가 보이도록 한다.
+        }
+        $('.visual .ctrl_btn li').eq(i).addClass('on'); //선택한 콘트롤 버튼에 서식적용
+        v_slide_img.eq(i).stop().fadeIn(); //해당 이미지가 보이게 한다.
+      }
+
+      function fadeInOut2(){
+        v_slide_img.fadeOut();
+        $('.visual .ctrl_btn li').removeClass('on'); //콘트롤버튼 서식 모두 제거
+        if(i==0){
+          i=2;
+        }else{
+          i--;
+        }
+        $('.visual .ctrl_btn li').eq(i).addClass('on'); //선택한 콘트롤 버튼에 서식적용
+        v_slide_img.eq(i).stop().fadeIn();
+      }
+
+      //3. 매 5초마다 함수를 반복호출하여 슬라이드가 변하게한다.
+      let Timer = setInterval(fadeInOut,5000);
+
+      //좌, 우 버튼 클릭시 해당하는 방향으로 슬라이드 이미지가 나오게하기
+      l_btn.click(function(){
+        fadeInOut2();
+      });
+      r_btn.click(function(){
+        fadeInOut();
+      });
+
+      //좌, 우버튼에 마우스 오버시 시간을 제거하고
+      $('.s_btn > li').hover(function(){
+        clearInterval(Timer);
+      },function(){//다시 마우스 아웃시 시간을 생성하여 다시 움직이게 한다.
+        Timer = setInterval(fadeInOut, 5000);
+      });
+
+      //pagenation(콘트롤 버튼)
+      //1. 현재이미지 번호를 체크
+      //2. 이미지 전체 개수
+
+      /*
+        구현순서
+        1. 콘트롤 버튼 변수 선언
+        2. 콘트롤 버튼(li) 클릭시 인덱스값 0,1,2값을 출력
+        3. 인덱스값을 fadeInOut함수의 매개변수값으로 넘김 => 슬라이드가 변함
+        4. 사용자가 클릭한 콘트롤버튼(li)에 act서식을 적용하여 어둡게함.
+      */
+
+      c_btn.click(function(){
+        clearInterval(Timer); //기존 자동슬라이드 제거
+
+        let idx = $(this).index();
+
+        v_slide_img.stop().fadeOut(); //보이는 이미지 숨기고
+        $('.visual .ctrl_btn li').removeClass('on'); //콘트롤버튼 서식 모두 제거
+
+        $('.visual .ctrl_btn li').eq(idx).addClass('on'); //선택한 콘트롤 버튼에 서식적용
+        v_slide_img.eq(idx).stop().fadeIn(); //해당 이미지가 보이게 한다.
+
+        i = idx; //원래 i값에 idx값을 일치시켜서 다음 순서가 제대로 나오게
+      });
+      //콘트롤버튼에 마우스 오버시 시간을 제거(Timer)하여 슬라이드 멈추게
+      $('.ctrl_btn').mouseenter(function(){
+        clearInterval(Timer);
+      });
+      //콘트롤버튼에 마우스 아웃시 다시 시간을 넣어서 다시 슬라이드 움직이게
+      c_btn.mouseleave(function(){
+        Timer = setInterval(fadeInOut, 5000);
+      });
+
+      // 윈도우창의 너비값 = $(window).width(); or $('window').height();
+      //$(window).innerWidth();
+
+      let w_width;
+      w_wigth = $(window).innerWidth();
+      console.log(w_width)();
+
+    }.easie;
+  }}
+    ;)
+
+    });
+  </script>
+</body>
+</html>

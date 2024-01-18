@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>쿠팡 메인슬라이드</title>
+</head>
+<style>
+  .main_slide *{margin:0px;padding:0px;}
+  .main_slide{
+    width: 100%;
+    position:fixed;
+    right: 0px;
+  }
+  .main_slide ul{
+    /* border: 1px solid #f00; */
+    background: #fff;
+    width: 200px; height: 380px;
+    right: 23%; top: 35px;
+    position: absolute;
+  }
+  .main_slide ul > li{
+    list-style:none;text-indent:10px;
+  }
+  .main_slide ul > li:hover{
+    border: 3px solid #4285F4;
+  }
+  .main_slide ul li a img a{
+    width: 100%;
+  }
+  #slide_img{width: 1920px; height: 450px;}
+
+
+</style>
+<body>
+  <h3>쿠팡 메인슬라이드</h3>
+  <nav class="main_slide">
+    <ul>
+      <li>
+        <a href="./images/main_slide01.jpg" title="메인1">
+          <img src="./images/menu01.jpg" alt="메인1">
+        </a>
+      </li>
+      <li>
+        <a href="./images/main_slide02.jpg" title="메인2">
+          <img src="./images/menu02.jpg" alt="메인2">
+        </a>
+      </li>
+      <li>
+        <a href="./images/main_slide03.jpg" title="메인3">
+          <img src="./images/menu03.jpg" alt="메인3">
+        </a>
+      </li>
+      <li>
+        <a href="./images/main_slide04.jpg" title="메인4">
+          <img src="./images/menu04.jpg" alt="메인4">
+        </a>
+      </li>
+      <li>
+        <a href="./images/main_slide05.jpg" title="메인5">
+          <img src="./images/menu05.jpg" alt="메인5">
+        </a>
+      </li>
+      <li>
+        <a href="./images/main_slide06.jpg" title="메인6">
+          <img src="./images/menu06.jpg" alt="메인6">
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <img src="./images/main_slide01.jpg" alt="메인1" id="slide_img">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      //1. 사용자가 메뉴에 마우스 오버시 href속성값을 변수에 담는다.
+      let img_src;
+      let main_slide_mnu = $('.main_slide ul li a');
+
+      main_slide_mnu.mouseenter(function(){
+        img_src = $(this).attr('href');
+        console.log(img_src);
+
+        //2. 변수에 담겨진 이미지 주소값을 보여질 이미지 #tour_img src속성값에 대입하여 이미지가 변경되도록 한다.
+        $('#slide_img').attr('src', img_src);
+
+      });
+      
+
+
+    });
+  </script>
+</body>
+
+</html>

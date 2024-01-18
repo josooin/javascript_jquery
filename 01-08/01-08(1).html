@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01_애니메이트 메서드 복습하기</title>
+  <style>
+    .box{
+      border: 3px solid #000;
+      width: 478px; height: 278px;
+      margin: 0px auto;
+      position: relative;
+    }
+    .title, .face{
+      position: absolute; opacity: 0;
+    }
+    .title{
+      /* top: 60px; left: 30px; */
+      top: 60px; left: -130px;
+    }
+    .face{
+      /* right: 0px; bottom: 0px; */
+      right: 0px; bottom: -290px;
+    }
+  </style>
+  <!-- 제이쿼리 라이브러리 연결하기 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+    $(document).ready(function(){
+      const t = $('.title');
+      const f = $('.face');
+
+      t.animate({'left':'30px','opacity':'1'}, 500);
+      f.delay(100).animate({'bottom':'0px','opacity':'1'}, 500);
+    });
+  </script>
+
+  <h3></h3>
+</head>
+<body>
+  <h2>01_애니메이트 메서드 복습하기</h2>
+
+  <article class="box">
+    <h3 class="title"><img src="./images/jobs_text.gif" alt="스티브잡스"></h3>
+    <img src="./images/jobs.png" alt="스티브잡스 얼굴" class="face">
+  </article>
+  
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제이쿼리 문서객체조작_01클래스조작</title>
+  <style>
+    .box{
+      background: #ccc;
+      border: 3px solid double;
+      width: 400px; height: 200px;
+    }
+    .act{
+      background: #ff0;
+    }
+
+    aside{
+      position: fixed;
+      right: 0px; top: 0px;
+      transition: 0.5s;
+    }
+    .on1{right: -90px;}
+    .fa-angle-right{
+      position: absolute;
+      top: 47%;
+      left: -33px;
+      border: 1px solid #ccc;
+      padding: 50px 10px;
+      font-size: 20px;
+      border-right: none;
+    }
+    .on{
+      transform: rotate(180deg);
+      border-right: 1px solid #ccc;
+      border-left: none;
+    }
+
+    /* 탭메뉴, 콘트롤버튼 서식 */
+    .tab_mnu, .c_btn{
+      display: flex;
+      margin: 0px; padding: 0px;
+      list-style: none;
+    }
+    .tab_mnu li a{
+      text-decoration: none;
+      color: #333;
+    }
+    .c_btn li{
+      width: 15px;
+      height: 15px;
+      border: 1px solid #333;
+      border-radius: 50%;
+    }
+    .on2{
+      background: #ff0;
+    }
+
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      // 1. addClass
+      $('#btn01').click(function(){
+        $('.box').addClass('act');
+      });
+      // 2. romveClass
+      $('#btn02').click(function(){
+        $('.box').removeClass('act');
+      });
+      // 3. toggleClass
+      $('#btn03').click(function(){
+        $('.box').toggleClass('act');
+      });
+      // 4. hasClass
+      $('#btn04').click(function(){
+        if($('.box').hasClass('act')==true){
+          alert('box에 act클래스가 존재합니다.');
+        }else{
+          alert('box에 act클래스가 존재하지 않습니다.');
+        }
+      });
+
+      $('h2').css('color','#f00');
+
+      $('i.fa-angle-right').click(function(){
+        $(this).toggleClass('on');
+        $('aside').toggleClass('on1');
+      });
+
+      // 3. 트롤버튼*탭메뉴 서식 구현하기
+      $('.tab_mnu li a').click(function(){
+        $('.tab_mnu li a').removeClass('on2');
+        $(this).addClass('on2');
+
+        return false; // 제이쿼리 문법에서는 a요소의 #기능을 무력화 시킴
+      });
+
+      $('.c_btn li').click(function(){
+        $('.c_btn li').removeClass('on2');
+        $(this).addClass('on2');
+      });
+
+    });
+  </script>
+  <!-- 폰트어썸 아이콘폰트 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">  
+</head>
+<body>
+  <h2>제이쿼리 문서객체조작(DOM)_01클래스조작</h2>
+  <p>사용자가 선택한 요소에 클래스를 추가하거나 삭제, 또는 클래스가 없는 요소를 찾아서 서식을 적용하는 메소드이다.</p>
+
+  <ul>
+    <li>addClass(); - 선택한 요소에 클래스 서식을 추가</li>
+    <li>removeClass(); - 선택한 요소에 클래스 서식을 제거</li>
+    <li>toggleClass(); - 선택한 요소에 클래스 서식을 추가/제거</li>
+    <li>hasClass(); - 선택한 요소에 해당 클래스 이름이 있는 지 여부를 판단하여 true, fals값으로 표시</li>
+    <li>Class(); - 사용자가 선택한 요소에 서식을 적용</li>
+  </ul>
+
+  <h3>실습하기</h3>
+  <p>버튼을 클릭하면 box요소에 서식을 추가/제거하기</p>
+  <div class="box">
+    아래 버튼을 누르면 현재 박스에 서식을 적용하거나 제거하기
+  </div>
+
+  <input type="button" value="addClass적용하기" id="btn01">
+  <input type="button" value="removeClass적용하기" id="btn02">
+  <input type="button" value="toggleClass적용하기" id="btn03">
+  <input type="button" value="hasClass적용하기" id="btn04">
+
+  <h3>2. 삼성화재 오른쪽 고정배치된 'quick menu'구현하기</h3>
+  <aside>
+    <i class="fas fa-angle-right"></i>
+    <img src="./images/quick.jpg" alt="퀵메뉴">
+  </aside>
+
+  <h3>3. 콘트롤버튼*탭메뉴 서식 구현하기</h3>
+
+  <ul class="tab_mnu">
+    <li><a href="javascript:void(0);" title="독박투어" class="on2">독박투어</a></li>
+    <li><a href="#" title="독박떳다 캡틴김">독박떳다 캡틴김</a></li>
+    <li><a href="#" title="배틀트립">배틀트립</a></li>
+    <li><a href="#" title="클럽메드 미니클럽">클럽메드 미니클럽</a></li>
+  </ul>
+
+  <ul class="c_btn">
+    <li class="on2">&nbsp;</li>
+    <li>&nbsp;</li>
+    <li>&nbsp;</li>
+    <li>&nbsp;</li>
+  </ul>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>
